@@ -1,5 +1,10 @@
 const express = require("express");
-const routes = express();
+
+// pega a função Router de dentro do express
+const routes = express.Router()
+
+// dirname e responsavel por pegar o diretorio / (raiz) da execução
+const views = __dirname + "/views/"
 
 const Profile = {
   data: {
@@ -13,8 +18,10 @@ const Profile = {
   },
   controllers:{
     index(req, res){
-      return res.render("profile", { profile: Profile.data })
+      // criação do caminho para ./src/views/ + profile.ejs
+      return res.render(views + "profile", { profile: Profile.data })
     },
+
     update(req, res){
       const data = req.body
       const weeksPerYear = 52
